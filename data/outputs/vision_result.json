@@ -1,0 +1,128 @@
+{
+  "screen_type": "home/dashboard",
+  "components": [
+    {
+      "type": "header",
+      "text": "Quiz Pool\nPlay Quiz Earn Money",
+      "position": "top",
+      "color": "cyan/teal background, white text",
+      "size": "large",
+      "style": "primary"
+    },
+    {
+      "type": "icon",
+      "text": "menu",
+      "position": "top-left",
+      "color": "white",
+      "size": "medium",
+      "style": "icon"
+    },
+    {
+      "type": "card",
+      "text": "27",
+      "position": "top-right",
+      "color": "white background, red text, gold/red icon",
+      "size": "small",
+      "style": "outlined"
+    },
+    {
+      "type": "button",
+      "text": "Redeem",
+      "position": "middle-left",
+      "color": "purple background, white text",
+      "size": "medium",
+      "style": "card"
+    },
+    {
+      "type": "button",
+      "text": "Rate Us",
+      "position": "middle-right",
+      "color": "light blue background, white text",
+      "size": "medium",
+      "style": "card"
+    },
+    {
+      "type": "card",
+      "text": "MATHS Beginner",
+      "position": "middle",
+      "color": "purple/pink gradient, white text",
+      "size": "large",
+      "style": "primary"
+    },
+    {
+      "type": "card",
+      "text": "GK BEGINNER",
+      "position": "middle",
+      "color": "blue gradient, white text",
+      "size": "large",
+      "style": "primary"
+    },
+    {
+      "type": "card",
+      "text": "SCIENCE BEGINNER",
+      "position": "bottom",
+      "color": "orange/red gradient, white text",
+      "size": "large",
+      "style": "primary"
+    }
+  ],
+  "layout_structure": "Vertical stack within a central container. It features a sticky top header, followed by a status/wallet area, a two-column row for utility actions, and a single-column list for the main quiz categories.",
+  "color_scheme": {
+    "primary_colors": [
+      "#00BCD4 (Cyan)",
+      "#9C27B0 (Purple)",
+      "#2196F3 (Blue)",
+      "#FF5722 (Orange)"
+    ],
+    "background": "#FFFFFF (White) with a shadowed container effect",
+    "text_colors": [
+      "#FFFFFF (White)",
+      "#D32F2F (Red)",
+      "#757575 (Grey)"
+    ]
+  },
+  "typography": {
+    "heading_sizes": "Large bold text for 'Quiz Pool' and category names (MATHS, GK, SCIENCE)",
+    "body_text_size": "Medium for subtitles (Beginner, Play Quiz Earn Money) and smaller for 'Redeem/Rate Us' labels",
+    "font_weights": "Bold for headings and category titles, regular for secondary information"
+  },
+  "spacing_and_density": {
+    "overall_density": "comfortable",
+    "padding": "Uniform outer margin with generous internal padding for the cards",
+    "element_spacing": "Consistent vertical gaps between the large category cards"
+  },
+  "interactive_elements": [
+    {
+      "element": "Quiz Category Cards (Maths, GK, Science)",
+      "action": "Opens the specific quiz module",
+      "visibility": "Very high due to size and color"
+    },
+    {
+      "element": "Redeem/Rate Us buttons",
+      "action": "Navigates to reward store or app store rating",
+      "visibility": "High"
+    },
+    {
+      "element": "Menu Icon",
+      "action": "Opens side navigation drawer",
+      "visibility": "High"
+    },
+    {
+      "element": "Points Card",
+      "action": "Likely navigates to wallet or transaction history",
+      "visibility": "High"
+    }
+  ],
+  "visual_hierarchy": "The teal header establishes the brand identity. The user's eye is then drawn to the wallet balance and then flows down through the large, colorful quiz category cards which are the primary calls to action.",
+  "accessibility_observations": [
+    "Small white text on light blue ('Rate Us') may have insufficient contrast.",
+    "The 'Beginner' subtitle on the science card has relatively small font size.",
+    "Icons are used alongside text, which helps with identification."
+  ],
+  "notable_patterns": [
+    "Card-based UI design",
+    "Gamification (coins/money bag imagery)",
+    "Gradient backgrounds for primary actions",
+    "Standard top-bar navigation"
+  ]
+}

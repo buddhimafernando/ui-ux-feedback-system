@@ -1,0 +1,75 @@
+{
+  "violations": [
+    {
+      "heuristic_id": 1,
+      "heuristic_name": "Visibility of system status",
+      "severity": "medium",
+      "issue": "Ambiguous status representation for currency/points.",
+      "affected_components": [
+        "card (top-right)"
+      ],
+      "evidence": "The card displays '27' with a gold/red icon but lacks a label or unit (e.g., 'Coins', 'Points', '$').",
+      "improvement_suggestion": "Add a clear label or currency symbol (e.g., '27 Points' or '$27') to inform the user of their exact balance/status."
+    },
+    {
+      "heuristic_id": 8,
+      "heuristic_name": "Aesthetic and minimalist design",
+      "severity": "medium",
+      "issue": "High cognitive load due to excessive color variety and competing visual elements.",
+      "affected_components": [
+        "header",
+        "button (Redeem)",
+        "button (Rate Us)",
+        "card (MATHS)",
+        "card (GK)",
+        "card (SCIENCE)"
+      ],
+      "evidence": "The UI uses Cyan, Purple, Light Blue, Pink, Dark Blue, and Orange gradients simultaneously. This creates a cluttered visual hierarchy where no single action stands out.",
+      "improvement_suggestion": "Simplify the color palette. Use a single primary color for main actions and neutral tones for secondary elements. Reserve high-contrast gradients for the most important 'Call to Action' only."
+    },
+    {
+      "heuristic_id": 10,
+      "heuristic_name": "Help and documentation",
+      "severity": "low",
+      "issue": "Lack of immediate guidance for an 'Earn Money' mechanic.",
+      "affected_components": [
+        "header"
+      ],
+      "evidence": "The tagline 'Play Quiz Earn Money' suggests a financial incentive, but there is no 'How it Works' or 'Info' button visible on the dashboard to explain the conversion or rules.",
+      "improvement_suggestion": "Include a small 'info' or '?' icon near the points balance or in the header to provide quick access to rules or FAQ."
+    }
+  ],
+  "strengths": [
+    {
+      "heuristic_id": 4,
+      "heuristic_name": "Consistency and standards",
+      "observation": "The use of large cards for quiz categories is consistent, and the placement of the menu icon in the top-left follows standard Android/iOS navigation patterns."
+    },
+    {
+      "heuristic_id": 6,
+      "heuristic_name": "Recognition rather than recall",
+      "observation": "Key category types (Maths, GK, Science) are clearly labeled with icons, allowing users to recognize options immediately without navigating through sub-menus."
+    }
+  ],
+  "mobile_specific_issues": [
+    {
+      "category": "Color and Contrast",
+      "severity": "high",
+      "issue": "Insufficient contrast for the 'Rate Us' button.",
+      "recommendation": "Change the 'Rate Us' background to a darker blue or the text to a darker color to meet WCAG AA standards (4.5:1 ratio)."
+    },
+    {
+      "category": "Typography",
+      "severity": "medium",
+      "issue": "The 'Beginner' subtitle text is noted as relatively small, which may hinder readability on smaller mobile screens.",
+      "recommendation": "Increase the font size of the category difficulty (Beginner) to at least 14sp and ensure it has high contrast against the gradient backgrounds."
+    },
+    {
+      "category": "Navigation",
+      "severity": "medium",
+      "issue": "Non-critical actions ('Rate Us') are given the same visual prominence and 'prime real estate' as core functional actions ('Redeem').",
+      "recommendation": "Move 'Rate Us' to the side menu or further down the page. Prioritize the quiz categories and the 'Redeem' function in the top-to-middle visual flow."
+    }
+  ],
+  "overall_score": 7.7
+}

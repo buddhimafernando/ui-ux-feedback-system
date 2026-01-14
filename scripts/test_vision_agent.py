@@ -4,7 +4,7 @@ from agents.vision_agent import VisionAgent
 agent = VisionAgent()
 
 # Path to your mobile UI screenshot
-image_path = "data/test_screenshots/test_image.png"
+image_path = "data/test_screenshots/test_image_fb.png"
 
 # Analyze screenshot
 result = agent.analyze_screenshot(image_path)

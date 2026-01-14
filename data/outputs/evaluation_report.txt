@@ -1,0 +1,63 @@
+======================================================================
+UX HEURISTIC EVALUATION REPORT
+======================================================================
+
+**Overall UX Score: 7.7/10**
+
+
+======================================================================
+VIOLATIONS FOUND (3)
+======================================================================
+
+
+MEDIUM Severity (2):
+----------------------------------------------------------------------
+
+1. Visibility of system status
+   Issue: Ambiguous status representation for currency/points.
+   Affected: card (top-right)
+   Suggestion: Add a clear label or currency symbol (e.g., '27 Points' or '$27') to inform the user of their exact balance/status.
+
+2. Aesthetic and minimalist design
+   Issue: High cognitive load due to excessive color variety and competing visual elements.
+   Affected: header, button (Redeem), button (Rate Us), card (MATHS), card (GK), card (SCIENCE)
+   Suggestion: Simplify the color palette. Use a single primary color for main actions and neutral tones for secondary elements. Reserve high-contrast gradients for the most important 'Call to Action' only.
+
+LOW Severity (1):
+----------------------------------------------------------------------
+
+1. Help and documentation
+   Issue: Lack of immediate guidance for an 'Earn Money' mechanic.
+   Affected: header
+   Suggestion: Include a small 'info' or '?' icon near the points balance or in the header to provide quick access to rules or FAQ.
+
+
+======================================================================
+STRENGTHS (2)
+======================================================================
+
+1. Consistency and standards
+   The use of large cards for quiz categories is consistent, and the placement of the menu icon in the top-left follows standard Android/iOS navigation patterns.
+
+2. Recognition rather than recall
+   Key category types (Maths, GK, Science) are clearly labeled with icons, allowing users to recognize options immediately without navigating through sub-menus.
+
+
+======================================================================
+MOBILE-SPECIFIC ISSUES (3)
+======================================================================
+
+1. Color and Contrast [high]
+   Issue: Insufficient contrast for the 'Rate Us' button.
+   Fix: Change the 'Rate Us' background to a darker blue or the text to a darker color to meet WCAG AA standards (4.5:1 ratio).
+
+2. Typography [medium]
+   Issue: The 'Beginner' subtitle text is noted as relatively small, which may hinder readability on smaller mobile screens.
+   Fix: Increase the font size of the category difficulty (Beginner) to at least 14sp and ensure it has high contrast against the gradient backgrounds.
+
+3. Navigation [medium]
+   Issue: Non-critical actions ('Rate Us') are given the same visual prominence and 'prime real estate' as core functional actions ('Redeem').
+   Fix: Move 'Rate Us' to the side menu or further down the page. Prioritize the quiz categories and the 'Redeem' function in the top-to-middle visual flow.
+
+
+======================================================================
