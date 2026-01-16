@@ -64,6 +64,9 @@ class HeuristicAgent:
 
             # Parse response
             result = self._parse_evaluation_response(response.text)
+            violations = result.get("violations", [])
+            result['overall_score'] = self._calculate_score(violations)
+
             
             # Calculate overall score
             result['overall_score'] = self._calculate_score(result.get('violations', []))
@@ -182,6 +185,9 @@ Return ONLY the JSON, no additional text.
     def _parse_evaluation_response(self, response_text: str) -> Dict:
         """Parse AI response into structured JSON"""
         try:
+
+            if not response_text:
+                raise ValueError("Empty response from Gemini")
             # Clean response
             cleaned = response_text.strip()
             
@@ -199,13 +205,15 @@ Return ONLY the JSON, no additional text.
             result = json.loads(cleaned)
             return result
             
-        except json.JSONDecodeError as e:
-            print(f"⚠️  Failed to parse evaluation JSON")
-            return {
-                "raw_response": response_text,
-                "parse_error": str(e),
-                "violations": []
-            }
+        except Exception as e:
+            print("⚠️ Heuristic LLM response invalid or empty")
+        return {
+            "violations": [],
+            "strengths": [],
+            "mobile_specific_issues": [],
+            "llm_error": str(e),
+            "raw_response": response_text
+        }
     
     def _calculate_score(self, violations: List[Dict]) -> float:
         """

@@ -1,128 +1,130 @@
 {
-  "screen_type": "home/dashboard",
+  "screen_type": "home",
   "components": [
     {
-      "type": "header",
-      "text": "Quiz Pool\nPlay Quiz Earn Money",
-      "position": "top",
-      "color": "cyan/teal background, white text",
+      "type": "icon",
+      "text": "hamburger menu",
+      "position": "top-left",
+      "color": "white",
+      "size": "small",
+      "style": "primary"
+    },
+    {
+      "type": "label",
+      "text": "Quiz Pool",
+      "position": "top-center",
+      "color": "white",
       "size": "large",
       "style": "primary"
     },
     {
-      "type": "icon",
-      "text": "menu",
-      "position": "top-left",
+      "type": "label",
+      "text": "Play Quiz Earn Money",
+      "position": "top-center",
       "color": "white",
-      "size": "medium",
-      "style": "icon"
+      "size": "small",
+      "style": "secondary"
     },
     {
-      "type": "card",
+      "type": "container",
       "text": "27",
       "position": "top-right",
-      "color": "white background, red text, gold/red icon",
-      "size": "small",
+      "color": "white background, red text",
+      "size": "medium",
       "style": "outlined"
     },
     {
       "type": "button",
       "text": "Redeem",
       "position": "middle-left",
-      "color": "purple background, white text",
+      "color": "purple gradient",
       "size": "medium",
-      "style": "card"
+      "style": "primary"
     },
     {
       "type": "button",
       "text": "Rate Us",
       "position": "middle-right",
-      "color": "light blue background, white text",
+      "color": "blue gradient",
       "size": "medium",
-      "style": "card"
+      "style": "primary"
     },
     {
-      "type": "card",
+      "type": "button",
       "text": "MATHS Beginner",
       "position": "middle",
-      "color": "purple/pink gradient, white text",
+      "color": "purple gradient",
       "size": "large",
       "style": "primary"
     },
     {
-      "type": "card",
+      "type": "button",
       "text": "GK BEGINNER",
       "position": "middle",
-      "color": "blue gradient, white text",
+      "color": "blue gradient",
       "size": "large",
       "style": "primary"
     },
     {
-      "type": "card",
+      "type": "button",
       "text": "SCIENCE BEGINNER",
       "position": "bottom",
-      "color": "orange/red gradient, white text",
+      "color": "orange gradient",
       "size": "large",
       "style": "primary"
     }
   ],
-  "layout_structure": "Vertical stack within a central container. It features a sticky top header, followed by a status/wallet area, a two-column row for utility actions, and a single-column list for the main quiz categories.",
+  "layout_structure": "The screen features a fixed top app bar with a title and menu. Below the header is a wallet/points display. The main content consists of a 2-column grid for secondary actions (Redeem/Rate Us) followed by a vertically stacked list of large cards for primary quiz categories.",
   "color_scheme": {
     "primary_colors": [
-      "#00BCD4 (Cyan)",
-      "#9C27B0 (Purple)",
-      "#2196F3 (Blue)",
-      "#FF5722 (Orange)"
+      "#00BCD4",
+      "#9C27B0",
+      "#2196F3",
+      "#FF5722"
     ],
-    "background": "#FFFFFF (White) with a shadowed container effect",
+    "background": "#FFFFFF",
     "text_colors": [
-      "#FFFFFF (White)",
-      "#D32F2F (Red)",
-      "#757575 (Grey)"
+      "#FFFFFF",
+      "#F44336",
+      "#000000"
     ]
   },
   "typography": {
-    "heading_sizes": "Large bold text for 'Quiz Pool' and category names (MATHS, GK, SCIENCE)",
-    "body_text_size": "Medium for subtitles (Beginner, Play Quiz Earn Money) and smaller for 'Redeem/Rate Us' labels",
-    "font_weights": "Bold for headings and category titles, regular for secondary information"
+    "heading_sizes": "Large slab-serif/monospace for the app title and bold sans-serif for quiz categories.",
+    "body_text_size": "Small for subtitles and button labels.",
+    "font_weights": "Regular for subtitles, Bold for main headings and quiz titles."
   },
   "spacing_and_density": {
     "overall_density": "comfortable",
-    "padding": "Uniform outer margin with generous internal padding for the cards",
-    "element_spacing": "Consistent vertical gaps between the large category cards"
+    "padding": "Consistent outer margins (approx 16dp). Cards have internal padding to separate icons from text.",
+    "element_spacing": "Vertical spacing between cards is clear, creating distinct touch targets."
   },
   "interactive_elements": [
     {
-      "element": "Quiz Category Cards (Maths, GK, Science)",
+      "element": "Menu Icon",
+      "action": "Opens side navigation drawer",
+      "visibility": "visible"
+    },
+    {
+      "element": "Quiz Category Cards",
       "action": "Opens the specific quiz module",
-      "visibility": "Very high due to size and color"
+      "visibility": "very high"
     },
     {
       "element": "Redeem/Rate Us buttons",
-      "action": "Navigates to reward store or app store rating",
-      "visibility": "High"
-    },
-    {
-      "element": "Menu Icon",
-      "action": "Opens side navigation drawer",
-      "visibility": "High"
-    },
-    {
-      "element": "Points Card",
-      "action": "Likely navigates to wallet or transaction history",
-      "visibility": "High"
+      "action": "Navigates to rewards or app store rating",
+      "visibility": "visible"
     }
   ],
-  "visual_hierarchy": "The teal header establishes the brand identity. The user's eye is then drawn to the wallet balance and then flows down through the large, colorful quiz category cards which are the primary calls to action.",
+  "visual_hierarchy": "The eye flows from the bright cyan header to the wallet balance, then moves down the list of vibrant, colorful quiz category cards which serve as the primary call-to-actions.",
   "accessibility_observations": [
-    "Small white text on light blue ('Rate Us') may have insufficient contrast.",
-    "The 'Beginner' subtitle on the science card has relatively small font size.",
-    "Icons are used alongside text, which helps with identification."
+    "White text on the light blue 'Rate Us' background may have low contrast.",
+    "The 'Beginner' and 'Redeem' labels are quite small relative to the screen size.",
+    "The wallet balance '27' in red may be hard to see for some colorblind users against the light background icons."
   ],
   "notable_patterns": [
     "Card-based UI design",
-    "Gamification (coins/money bag imagery)",
-    "Gradient backgrounds for primary actions",
-    "Standard top-bar navigation"
+    "Gamified status tracking (coin/money icons)",
+    "Icon-text combination for category identification"
   ]
 }

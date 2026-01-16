@@ -1,0 +1,174 @@
+{
+  "feedback_items": [
+    {
+      "id": 1,
+      "title": "Clarify Balance with Context and Color",
+      "category": "Visibility of system status",
+      "priority": "high",
+      "why_it_matters": "Users need to immediately understand what '27' represents. Using red text typically signals a negative balance or an error, which can cause unnecessary anxiety.",
+      "what_to_do": [
+        "Add a descriptive icon (like a coin, star, or wallet) to the left of the numeric value",
+        "Change the text color from red (#F44336) to a neutral dark grey or a 'reward' color like gold or green",
+        "Add a small unit label if an icon isn't possible (e.g., '27 Pts')",
+        "Ensure the container has enough padding to breathe"
+      ],
+      "code_example": {
+        "language": "xml",
+        "description": "Updated Balance Container with Icon",
+        "code": "<LinearLayout\n    android:layout_width=\"wrap_content\"\n    android:layout_height=\"wrap_content\"\n    android:orientation=\"horizontal\"\n    android:background=\"@drawable/bg_rounded_surface\"\n    android:padding=\"8dp\">\n\n    <ImageView\n        android:layout_width=\"18dp\"\n        android:layout_height=\"18dp\"\n        android:src=\"@drawable/ic_coin\"\n        app:tint=\"#FFC107\" />\n\n    <TextView\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"27\"\n        android:textColor=\"#212121\"\n        android:textSize=\"16sp\"\n        android:layout_marginStart=\"4dp\" />\n</LinearLayout>"
+      },
+      "wireframe_changes": "In the top-right corner, replace the red '27' text with a horizontal pill-shaped container holding a gold coin icon followed by '27' in dark grey text.",
+      "affected_components": [
+        "container (text: 27)"
+      ],
+      "estimated_effort": "20 minutes"
+    },
+    {
+      "id": 2,
+      "title": "Fix Accessibility Contrast Ratios",
+      "category": "Color and Contrast",
+      "priority": "high",
+      "why_it_matters": "White text on light gradients often fails accessibility standards, making it nearly impossible for users with visual impairments or those in bright sunlight to read your buttons.",
+      "what_to_do": [
+        "Test your color pairs (White on #00BCD4) using a WCAG contrast checker",
+        "Darken the blue and purple gradients until they reach at least a 4.5:1 ratio with white text",
+        "Alternatively, use a dark navy text color on light backgrounds",
+        "Avoid using 'vibrant' colors as background for thin white text"
+      ],
+      "code_example": {
+        "language": "xml",
+        "description": "High-contrast gradient definition",
+        "code": "<!-- res/drawable/btn_gradient_blue.xml -->\n<shape xmlns:android=\"http://schemas.android.com/apk/res/android\">\n    <gradient\n        android:startColor=\"#1976D2\" \n        android:endColor=\"#0D47A1\"\n        android:angle=\"45\" />\n    <corners android:radius=\"8dp\" />\n</shape>"
+      },
+      "wireframe_changes": "Update the 'Rate Us' and 'Redeem' buttons to use deeper, darker versions of blue/purple to ensure the white text pops clearly.",
+      "affected_components": [
+        "button (Redeem)",
+        "button (Rate Us)"
+      ],
+      "estimated_effort": "15 minutes"
+    },
+    {
+      "id": 3,
+      "title": "Simplify Visual Palette and Hierarchy",
+      "category": "Aesthetic and minimalist design",
+      "priority": "medium",
+      "why_it_matters": "Using four high-vibrancy gradients simultaneously competes for the user's attention. A unified color scheme helps users identify primary actions faster and reduces 'visual noise'.",
+      "what_to_do": [
+        "Select one primary brand color for main quiz buttons (e.g., Indigo or Blue)",
+        "Use a secondary, more neutral style for auxiliary actions like 'Rate Us'",
+        "Use color intentionally to categorize (e.g., all 'Beginner' levels share one color)",
+        "Reduce gradient intensity to allow text to be the hero"
+      ],
+      "code_example": {
+        "language": "kotlin",
+        "description": "Applying a unified theme programmatically",
+        "code": "// Instead of unique colors for every button\nval primaryActionColor = ContextCompat.getColor(context, R.color.brand_primary)\n\nlistOf(mathBtn, gkBtn, scienceBtn).forEach {\n    it.setBackgroundColor(primaryActionColor)\n    it.setTextColor(Color.WHITE)\n}"
+      },
+      "wireframe_changes": "Change 'MATHS', 'GK', and 'SCIENCE' buttons to use a consistent Primary Blue. Change 'Redeem' and 'Rate Us' to a outlined button style or a softer, neutral grey background.",
+      "affected_components": [
+        "button (Redeem)",
+        "button (Rate Us)",
+        "button (MATHS Beginner)",
+        "button (GK BEGINNER)",
+        "button (SCIENCE BEGINNER)"
+      ],
+      "estimated_effort": "45 minutes"
+    },
+    {
+      "id": 4,
+      "title": "Boost Minimum Font Sizes",
+      "category": "Typography",
+      "priority": "medium",
+      "why_it_matters": "Mobile users often view screens at arm's length or on the move. Text smaller than 14sp is difficult to parse and creates a poor user experience for secondary information.",
+      "what_to_do": [
+        "Increase 'Beginner' and 'Redeem' text to a minimum of 14sp, ideally 16sp",
+        "Use 'sp' (scale-independent pixels) for all font sizes to respect user system settings",
+        "Check that text doesn't truncate when the size is increased",
+        "Use font weight (Medium/Bold) to create hierarchy instead of just size"
+      ],
+      "code_example": {
+        "language": "xml",
+        "description": "Proper text scaling",
+        "code": "<TextView\n    android:id=\"@+id/label_beginner\"\n    android:layout_width=\"wrap_content\"\n    android:layout_height=\"wrap_content\"\n    android:textSize=\"14sp\" \n    android:fontFamily=\"sans-serif-medium\"\n    android:textAllCaps=\"false\"\n    android:text=\"@string/beginner\" />"
+      },
+      "wireframe_changes": "Enlarge the text 'Beginner' inside the category cards and the text 'Redeem' on the button. Ensure there is enough vertical padding inside the buttons to accommodate the larger text.",
+      "affected_components": [
+        "button (Redeem)",
+        "button (MATHS Beginner)",
+        "button (GK BEGINNER)",
+        "button (SCIENCE BEGINNER)"
+      ],
+      "estimated_effort": "20 minutes"
+    },
+    {
+      "id": 5,
+      "title": "Standardize Button Casing",
+      "category": "Consistency and standards",
+      "priority": "low",
+      "why_it_matters": "Inconsistent casing (Title Case vs. ALL CAPS) feels like an oversight and reduces the professional feel of the app. Consistency builds trust.",
+      "what_to_do": [
+        "Choose one casing style for all primary buttons (Title Case is generally more readable)",
+        "Update string resources to use the chosen format",
+        "Set 'android:textAllCaps=\"false\"' in XML if using Title Case on Material Buttons"
+      ],
+      "code_example": {
+        "language": "xml",
+        "description": "Consistent button casing",
+        "code": "<!-- Use Title Case for better readability -->\n<Button\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"wrap_content\"\n    android:textAllCaps=\"false\"\n    android:text=\"Maths Beginner\" />"
+      },
+      "wireframe_changes": "Update 'GK BEGINNER' and 'SCIENCE BEGINNER' to 'Gk Beginner' and 'Science Beginner' to match the Maths button.",
+      "affected_components": [
+        "button (GK BEGINNER)",
+        "button (SCIENCE BEGINNER)"
+      ],
+      "estimated_effort": "10 minutes"
+    }
+  ],
+  "wireframe_instructions": {
+    "overall_changes": "The home screen needs a cleaner, more organized look by reducing the color count and standardizing typography.",
+    "priority_fixes": [
+      "Add a coin icon and change color for the '27' balance indicator in the top right.",
+      "Darken background gradients on all buttons to pass contrast checks with white text.",
+      "Convert all button labels to Title Case for visual consistency."
+    ],
+    "layout_modifications": [
+      "Increase the horizontal gap between 'Redeem' and 'Rate Us' buttons to at least 12dp.",
+      "Ensure vertical spacing between the three main category buttons is consistent (16dp suggested)."
+    ],
+    "color_adjustments": [
+      "Consolidate the 4 vibrant gradients into 1 primary brand color for categories and 1 neutral/muted color for utility buttons.",
+      "Change the status number '27' from red to dark grey or gold."
+    ],
+    "typography_changes": [
+      "Increase the font size of all secondary labels ('Beginner', 'Redeem') to 14sp minimum.",
+      "Ensure all buttons use Title Case (e.g., 'Science Beginner' instead of 'SCIENCE BEGINNER')."
+    ]
+  },
+  "quick_wins": [
+    {
+      "change": "Set textAllCaps=\"false\" on all buttons",
+      "impact": "Immediately improves visual consistency and professional look",
+      "effort": "5 minutes"
+    },
+    {
+      "change": "Update '27' text color to #212121",
+      "impact": "Removes the false 'error' signal to the user",
+      "effort": "2 minutes"
+    },
+    {
+      "change": "Increase 'Redeem' font size to 16sp",
+      "impact": "Makes the primary conversion button much more readable",
+      "effort": "2 minutes"
+    }
+  ],
+  "summary": {
+    "total_issues": 7,
+    "critical": 0,
+    "high": 2,
+    "medium": 3,
+    "low": 2,
+    "estimated_total_time": "2 hours"
+  },
+  "platform": "android",
+  "total_feedback_items": 5
+}

@@ -2,34 +2,42 @@
 UX HEURISTIC EVALUATION REPORT
 ======================================================================
 
-**Overall UX Score: 7.7/10**
+**Overall UX Score: 4.7/10**
 
 
 ======================================================================
-VIOLATIONS FOUND (3)
+VIOLATIONS FOUND (4)
 ======================================================================
 
+
+HIGH Severity (1):
+----------------------------------------------------------------------
+
+1. Visibility of system status
+   Issue: The numeric value '27' lacks context or units, leaving the user uninformed about their actual status (e.g., is it currency, points, or remaining lives?).
+   Affected: container (text: 27)
+   Suggestion: Add a descriptive icon (e.g., a coin or wallet icon) or a label next to the number to clarify what the value represents.
 
 MEDIUM Severity (2):
 ----------------------------------------------------------------------
 
-1. Visibility of system status
-   Issue: Ambiguous status representation for currency/points.
-   Affected: card (top-right)
-   Suggestion: Add a clear label or currency symbol (e.g., '27 Points' or '$27') to inform the user of their exact balance/status.
+1. Match between system and real world
+   Issue: The use of red text for a wallet balance or score is counter-intuitive and contradicts standard mental models where red signifies an error, debt, or negative state.
+   Affected: container (text: 27)
+   Suggestion: Use a neutral color (black/dark grey) or a color associated with reward (green or gold) for positive balances.
 
 2. Aesthetic and minimalist design
-   Issue: High cognitive load due to excessive color variety and competing visual elements.
-   Affected: header, button (Redeem), button (Rate Us), card (MATHS), card (GK), card (SCIENCE)
-   Suggestion: Simplify the color palette. Use a single primary color for main actions and neutral tones for secondary elements. Reserve high-contrast gradients for the most important 'Call to Action' only.
+   Issue: The use of four distinct high-vibrancy gradients (Cyan, Purple, Blue, Orange) within a single screen creates high cognitive load and visual noise.
+   Affected: button (Redeem), button (Rate Us), button (MATHS Beginner), button (GK BEGINNER), button (SCIENCE BEGINNER)
+   Suggestion: Consolidate the color palette. Use a single primary brand color for main actions and a secondary color for auxiliary actions to create a clearer visual hierarchy.
 
 LOW Severity (1):
 ----------------------------------------------------------------------
 
-1. Help and documentation
-   Issue: Lack of immediate guidance for an 'Earn Money' mechanic.
-   Affected: header
-   Suggestion: Include a small 'info' or '?' icon near the points balance or in the header to provide quick access to rules or FAQ.
+1. Consistency and standards
+   Issue: Inconsistent text casing across primary action buttons creates a lack of visual harmony and professionalism.
+   Affected: button (MATHS Beginner), button (GK BEGINNER), button (SCIENCE BEGINNER)
+   Suggestion: Standardize all button text to either Title Case or ALL CAPS for consistency across the interface.
 
 
 ======================================================================
@@ -37,10 +45,10 @@ STRENGTHS (2)
 ======================================================================
 
 1. Consistency and standards
-   The use of large cards for quiz categories is consistent, and the placement of the menu icon in the top-left follows standard Android/iOS navigation patterns.
+   The layout follows standard mobile patterns with a hamburger menu for secondary navigation and a clear top-center branding area.
 
 2. Recognition rather than recall
-   Key category types (Maths, GK, Science) are clearly labeled with icons, allowing users to recognize options immediately without navigating through sub-menus.
+   The main quiz categories are presented as large, distinct buttons on the home screen, allowing users to immediately recognize their options without navigating sub-menus.
 
 
 ======================================================================
@@ -48,16 +56,16 @@ MOBILE-SPECIFIC ISSUES (3)
 ======================================================================
 
 1. Color and Contrast [high]
-   Issue: Insufficient contrast for the 'Rate Us' button.
-   Fix: Change the 'Rate Us' background to a darker blue or the text to a darker color to meet WCAG AA standards (4.5:1 ratio).
+   Issue: White text on light blue or purple gradients (specifically the 'Rate Us' button) likely fails WCAG AA contrast requirements.
+   Fix: Darken the background gradients or use a darker text color to ensure readability for users with visual impairments.
 
 2. Typography [medium]
-   Issue: The 'Beginner' subtitle text is noted as relatively small, which may hinder readability on smaller mobile screens.
-   Fix: Increase the font size of the category difficulty (Beginner) to at least 14sp and ensure it has high contrast against the gradient backgrounds.
+   Issue: Secondary labels such as 'Beginner' and 'Redeem' are reported as 'small' relative to the screen, which may fall below the recommended 16sp/17pt for mobile readability.
+   Fix: Increase minimum font size for secondary labels to at least 14-16sp to ensure legibility on various screen densities.
 
-3. Navigation [medium]
-   Issue: Non-critical actions ('Rate Us') are given the same visual prominence and 'prime real estate' as core functional actions ('Redeem').
-   Fix: Move 'Rate Us' to the side menu or further down the page. Prioritize the quiz categories and the 'Redeem' function in the top-to-middle visual flow.
+3. Touch Targets [low]
+   Issue: While the vertical spacing is clear, the 'Redeem' and 'Rate Us' buttons are placed side-by-side in the middle-left/right, which may result in tight horizontal spacing.
+   Fix: Ensure a minimum of 8dp spacing between the 'Redeem' and 'Rate Us' buttons to prevent accidental taps.
 
 
 ======================================================================
