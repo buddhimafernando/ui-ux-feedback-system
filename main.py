@@ -25,7 +25,7 @@ def main():
         return
     
     # Test with single image
-    test_image_path = "data/test_screenshots/test_image.png"
+    test_image_path = "data/test_screenshots/test_image.PNG"
     
     if not os.path.exists(test_image_path):
         print(f"\n⚠️  Test image not found: {test_image_path}")
@@ -34,7 +34,7 @@ def main():
         return
     
     # Analyze the image
-    print(f"\n📸 Analyzing: {test_image_path}")
+    print(f"\nAnalyzing: {test_image_path}")
     result = agent.analyze_screenshot(test_image_path)
     
     # Save result to JSON

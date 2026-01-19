@@ -3,85 +3,51 @@
     {
       "heuristic_id": 1,
       "heuristic_name": "Visibility of system status",
-      "severity": "high",
-      "issue": "The numeric value '27' lacks context or units, leaving the user uninformed about their actual status (e.g., is it currency, points, or remaining lives?).",
+      "severity": "critical",
+      "issue": "The interface provides no information or feedback to the user, as no components are detected. The user is left in the dark regarding what the application is doing or what state it is in.",
       "affected_components": [
-        "container (text: 27)"
+        "Screen"
       ],
-      "evidence": "A container in the top-right position shows only '27' without an accompanying icon or label (like '$', 'pts', or a coin icon).",
-      "improvement_suggestion": "Add a descriptive icon (e.g., a coin or wallet icon) or a label next to the number to clarify what the value represents."
-    },
-    {
-      "heuristic_id": 2,
-      "heuristic_name": "Match between system and real world",
-      "severity": "medium",
-      "issue": "The use of red text for a wallet balance or score is counter-intuitive and contradicts standard mental models where red signifies an error, debt, or negative state.",
-      "affected_components": [
-        "container (text: 27)"
-      ],
-      "evidence": "Color scheme data indicates '27' is rendered in red text (#F44336) inside a top-right container.",
-      "improvement_suggestion": "Use a neutral color (black/dark grey) or a color associated with reward (green or gold) for positive balances."
-    },
-    {
-      "heuristic_id": 4,
-      "heuristic_name": "Consistency and standards",
-      "severity": "low",
-      "issue": "Inconsistent text casing across primary action buttons creates a lack of visual harmony and professionalism.",
-      "affected_components": [
-        "button (MATHS Beginner)",
-        "button (GK BEGINNER)",
-        "button (SCIENCE BEGINNER)"
-      ],
-      "evidence": "The Maths button uses Title Case ('Beginner'), while the GK and Science buttons use ALL CAPS ('BEGINNER').",
-      "improvement_suggestion": "Standardize all button text to either Title Case or ALL CAPS for consistency across the interface."
-    },
-    {
-      "heuristic_id": 8,
-      "heuristic_name": "Aesthetic and minimalist design",
-      "severity": "medium",
-      "issue": "The use of four distinct high-vibrancy gradients (Cyan, Purple, Blue, Orange) within a single screen creates high cognitive load and visual noise.",
-      "affected_components": [
-        "button (Redeem)",
-        "button (Rate Us)",
-        "button (MATHS Beginner)",
-        "button (GK BEGINNER)",
-        "button (SCIENCE BEGINNER)"
-      ],
-      "evidence": "Primary colors listed include #00BCD4, #9C27B0, #2196F3, and #FF5722 used across various buttons.",
-      "improvement_suggestion": "Consolidate the color palette. Use a single primary brand color for main actions and a secondary color for auxiliary actions to create a clearer visual hierarchy."
-    }
-  ],
-  "strengths": [
-    {
-      "heuristic_id": 4,
-      "heuristic_name": "Consistency and standards",
-      "observation": "The layout follows standard mobile patterns with a hamburger menu for secondary navigation and a clear top-center branding area."
+      "evidence": "Components Detected: 0, Screen Type: unknown",
+      "improvement_suggestion": "Ensure that the UI displays content, loading indicators, or empty state messaging to inform the user of the current status."
     },
     {
       "heuristic_id": 6,
       "heuristic_name": "Recognition rather than recall",
-      "observation": "The main quiz categories are presented as large, distinct buttons on the home screen, allowing users to immediately recognize their options without navigating sub-menus."
-    }
-  ],
-  "mobile_specific_issues": [
-    {
-      "category": "Color and Contrast",
-      "severity": "high",
-      "issue": "White text on light blue or purple gradients (specifically the 'Rate Us' button) likely fails WCAG AA contrast requirements.",
-      "recommendation": "Darken the background gradients or use a darker text color to ensure readability for users with visual impairments."
+      "severity": "critical",
+      "issue": "There are no visible elements, icons, or labels for the user to interact with, meaning there is nothing to recognize. This forces the user to rely entirely on memory or guesswork to proceed.",
+      "affected_components": [
+        "Global UI"
+      ],
+      "evidence": "Components Detected: 0",
+      "improvement_suggestion": "Implement standard UI components (buttons, navigation bars, text fields) with clear labels and icons to minimize cognitive load."
     },
     {
-      "category": "Typography",
-      "severity": "medium",
-      "issue": "Secondary labels such as 'Beginner' and 'Redeem' are reported as 'small' relative to the screen, which may fall below the recommended 16sp/17pt for mobile readability.",
-      "recommendation": "Increase minimum font size for secondary labels to at least 14-16sp to ensure legibility on various screen densities."
+      "heuristic_id": 10,
+      "heuristic_name": "Help and documentation",
+      "severity": "high",
+      "issue": "In the absence of any UI elements or onboarding flow, there is no guidance for the user on how to use the application or what its purpose is.",
+      "affected_components": [
+        "Global UI"
+      ],
+      "evidence": "Components Detected: 0",
+      "improvement_suggestion": "Provide contextual help or an initial onboarding experience to guide the user through the app's features."
+    }
+  ],
+  "strengths": [],
+  "mobile_specific_issues": [
+    {
+      "category": "Navigation",
+      "severity": "critical",
+      "issue": "No navigation hierarchy or interactive elements (like a Bottom Navigation Bar or Tab Bar) were detected.",
+      "recommendation": "Establish a clear navigation structure using platform-standard components (iOS Tab Bar or Android Bottom Navigation) to allow users to move through the app."
     },
     {
       "category": "Touch Targets",
-      "severity": "low",
-      "issue": "While the vertical spacing is clear, the 'Redeem' and 'Rate Us' buttons are placed side-by-side in the middle-left/right, which may result in tight horizontal spacing.",
-      "recommendation": "Ensure a minimum of 8dp spacing between the 'Redeem' and 'Rate Us' buttons to prevent accidental taps."
+      "severity": "critical",
+      "issue": "No interactive touch targets detected, making the interface completely non-functional for mobile use.",
+      "recommendation": "Add interactive elements with a minimum size of 44x44pt (iOS) or 48x48dp (Android) to ensure they are accessible for touch input."
     }
   ],
-  "overall_score": 4.7
+  "overall_score": 0
 }

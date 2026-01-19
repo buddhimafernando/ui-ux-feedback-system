@@ -58,7 +58,7 @@
 #     print("\n3️⃣ Testing image analysis...")
     
 #     # Check for test image
-#     test_image_path = "data/test_screenshots/test_image.png"
+#     test_image_path = "data/test_screenshots/test_image.PNG"
     
 #     if not os.path.exists(test_image_path):
 #         print(f"   ⚠️  No test image found")
@@ -77,7 +77,7 @@
     
 #     # Load image
 #     image = Image.open(test_image_path).convert("RGB")
-#     print(f"   📸 Image loaded: {image.size}")
+#     print(f"   Image loaded: {image.size}")
     
 #     # Test 1: Simple caption
 #     print("\n   Test 1: Image Captioning")

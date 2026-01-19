@@ -1,0 +1,129 @@
+{
+  "screen_type": "home/dashboard",
+  "components": [
+    {
+      "type": "label",
+      "text": "Quiz Pool",
+      "position": "top",
+      "color": "white",
+      "size": "large",
+      "style": "primary"
+    },
+    {
+      "type": "label",
+      "text": "Play Quiz Earn Money",
+      "position": "top",
+      "color": "white",
+      "size": "small",
+      "style": "secondary"
+    },
+    {
+      "type": "icon",
+      "text": "menu",
+      "position": "top-left",
+      "color": "white",
+      "size": "medium",
+      "style": "icon"
+    },
+    {
+      "type": "image",
+      "text": "27",
+      "position": "top-right",
+      "color": "orange/red text on white background",
+      "size": "medium",
+      "style": "card"
+    },
+    {
+      "type": "button",
+      "text": "Redeem",
+      "position": "middle-left",
+      "color": "purple gradient",
+      "size": "medium",
+      "style": "card"
+    },
+    {
+      "type": "button",
+      "text": "Rate Us",
+      "position": "middle-right",
+      "color": "blue gradient",
+      "size": "medium",
+      "style": "card"
+    },
+    {
+      "type": "button",
+      "text": "MATHS Beginner",
+      "position": "middle",
+      "color": "purple/pink gradient",
+      "size": "large",
+      "style": "card"
+    },
+    {
+      "type": "button",
+      "text": "GK BEGINNER",
+      "position": "middle",
+      "color": "blue gradient",
+      "size": "large",
+      "style": "card"
+    },
+    {
+      "type": "button",
+      "text": "SCIENCE BEGINNER",
+      "position": "bottom",
+      "color": "orange gradient",
+      "size": "large",
+      "style": "card"
+    }
+  ],
+  "layout_structure": "A vertical stack starting with a cyan header, followed by a status card for balance, a two-column grid for secondary actions, and a vertical list of large, full-width category cards.",
+  "color_scheme": {
+    "primary_colors": [
+      "#00BCD4",
+      "#9C27B0",
+      "#2196F3",
+      "#FF5722"
+    ],
+    "background": "#F5F5F5",
+    "text_colors": [
+      "#FFFFFF",
+      "#333333"
+    ]
+  },
+  "typography": {
+    "heading_sizes": "Large, monospaced font for the main title; Medium, bold sans-serif for category names.",
+    "body_text_size": "Small for subtitles like 'Beginner' and 'Play Quiz Earn Money'.",
+    "font_weights": "Bold for headings, regular for descriptive text."
+  },
+  "spacing_and_density": {
+    "overall_density": "comfortable",
+    "padding": "Generous padding within cards; standard outer margins.",
+    "element_spacing": "Consistent vertical spacing between list items and section blocks."
+  },
+  "interactive_elements": [
+    {
+      "element": "Category Cards (Maths, GK, Science)",
+      "action": "Navigates to the respective quiz selection or start screen.",
+      "visibility": "Highly visible due to size and vibrant colors."
+    },
+    {
+      "element": "Redeem/Rate Us buttons",
+      "action": "Opens reward redemption or app store rating interface.",
+      "visibility": "Visible but secondary to the main quiz categories."
+    },
+    {
+      "element": "Hamburger Menu",
+      "action": "Opens the navigation drawer for app settings and profile.",
+      "visibility": "Standard top-left placement."
+    }
+  ],
+  "visual_hierarchy": "The eye is led from the bright cyan header down to the balance info, then quickly scans the two action buttons before landing on the large, colorful primary quiz category cards which occupy the center and bottom of the screen.",
+  "accessibility_observations": [
+    "Text contrast on the 'Beginner' labels within the cards may be low for users with visual impairments.",
+    "Icons are decorative but crucial for context; ensure they have proper screen reader labels."
+  ],
+  "notable_patterns": [
+    "Card-based UI design",
+    "Color coding for different categories",
+    "Gradient backgrounds on touch targets",
+    "Gamification elements like a point/currency balance display"
+  ]
+}

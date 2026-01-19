@@ -1,0 +1,170 @@
+{
+  "feedback_items": [
+    {
+      "id": 1,
+      "title": "Establish Screen Layout and Loading States",
+      "category": "Visibility of system status",
+      "priority": "critical",
+      "why_it_matters": "When a screen is blank, users assume the app has crashed or failed to load. Providing immediate visual feedback through placeholders or spinners keeps users engaged while data is being fetched.",
+      "what_to_do": [
+        "Implement a Scaffold or FrameLayout to hold screen content",
+        "Add a ProgressBar (Circular) to the center of the screen for initial data loading",
+        "Create an 'Empty State' view with an icon and text for when no data is available",
+        "Use Shimmer effect placeholders to represent loading content items"
+      ],
+      "code_example": {
+        "language": "kotlin",
+        "description": "Show a loading spinner while data is being fetched",
+        "code": "// In your Activity or Fragment using ViewBinding\nbinding.progressBar.visibility = View.VISIBLE\nbinding.recyclerView.visibility = View.GONE\n\nviewModel.data.observe(viewLifecycleOwner) { data ->\n    binding.progressBar.visibility = View.GONE\n    if (data.isEmpty()) {\n        binding.emptyStateLayout.visibility = View.VISIBLE\n    } else {\n        binding.recyclerView.visibility = View.VISIBLE\n        adapter.submitList(data)\n    }\n}"
+      },
+      "wireframe_changes": "Add a ProgressBar in the center of the screen. When data loads, replace it with a vertical list of cards and a Top App Bar with the screen title.",
+      "affected_components": [
+        "Global Screen"
+      ],
+      "estimated_effort": "45 minutes"
+    },
+    {
+      "id": 2,
+      "title": "Implement Standard Android Navigation",
+      "category": "Navigation",
+      "priority": "critical",
+      "why_it_matters": "Without a navigation structure, users are trapped on a single screen with no way to explore the app. A standard Bottom Navigation Bar provides immediate context and movement.",
+      "what_to_do": [
+        "Add a BottomNavigationView for top-level app destinations",
+        "Include 3-5 clearly labeled menu items with icons (e.g., Home, Search, Profile)",
+        "Ensure the 'Back' button behavior follows Android platform standards",
+        "Highlight the active icon to show the user's current location"
+      ],
+      "code_example": {
+        "language": "xml",
+        "description": "Define a BottomNavigationView in your layout",
+        "code": "<com.google.android.material.bottomnavigation.BottomNavigationView\n    android:id=\"@+id/bottom_navigation\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"wrap_content\"\n    android:layout_gravity=\"bottom\"\n    app:menu=\"@menu/bottom_navigation_menu\" />"
+      },
+      "wireframe_changes": "Add a Bottom Navigation Bar at the base of the screen with three icons: 'Home', 'Activity', and 'Settings'.",
+      "affected_components": [
+        "Global UI",
+        "Navigation Bar"
+      ],
+      "estimated_effort": "60 minutes"
+    },
+    {
+      "id": 3,
+      "title": "Add High-Visibility Interactive Elements",
+      "category": "Recognition rather than recall",
+      "priority": "critical",
+      "why_it_matters": "Users rely on visual cues like buttons and cards to understand what is interactive. A lack of these elements forces users to guess where to tap, leading to a poor experience.",
+      "what_to_do": [
+        "Add Material Design 'Cards' for content items to provide elevation and tap visual cues",
+        "Include a Floating Action Button (FAB) for the primary screen action",
+        "Use distinct text styles for headers vs. body text to create visual hierarchy",
+        "Add icons next to text labels to aid rapid recognition"
+      ],
+      "code_example": {
+        "language": "xml",
+        "description": "Create a Material Card with a clear tap target",
+        "code": "<com.google.android.material.card.MaterialCardView\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"wrap_content\"\n    android:clickable=\"true\"\n    android:focusable=\"true\"\n    app:cardElevation=\"2dp\"\n    app:cardCornerRadius=\"8dp\">\n\n    <TextView\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"Start New Task\"\n        android:padding=\"16dp\" />\n</com.google.android.material.card.MaterialCardView>"
+      },
+      "wireframe_changes": "Place a large 'Primary Action' button (FAB) in the bottom-right corner and populate the screen with a few card-based items containing icons.",
+      "affected_components": [
+        "Global UI",
+        "Buttons"
+      ],
+      "estimated_effort": "60 minutes"
+    },
+    {
+      "id": 4,
+      "title": "Optimize Touch Target Sizes",
+      "category": "Touch Targets",
+      "priority": "high",
+      "why_it_matters": "Small or non-existent touch targets make an app feel broken or difficult to use, especially for users with motor impairments or those using the app on the go.",
+      "what_to_do": [
+        "Ensure all clickable elements are at least 48x48dp in size",
+        "Add padding to small icons to increase their touchable area without changing visual size",
+        "Space interactive elements at least 8dp apart to prevent accidental taps",
+        "Apply 'ripple' effects to give visual feedback when a target is touched"
+      ],
+      "code_example": {
+        "language": "xml",
+        "description": "Increase touch target with padding",
+        "code": "<!-- Button with min height to meet accessibility standards -->\n<Button\n    android:id=\"@+id/submit_button\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"wrap_content\"\n    android:minHeight=\"48dp\"\n    android:text=\"Submit\" />"
+      },
+      "wireframe_changes": "Adjust all list items and buttons to ensure they have a visible height of at least 48dp and appropriate spacing.",
+      "affected_components": [
+        "Buttons",
+        "List Items"
+      ],
+      "estimated_effort": "30 minutes"
+    },
+    {
+      "id": 5,
+      "title": "Introduce Welcome and Onboarding Guidance",
+      "category": "Help and documentation",
+      "priority": "high",
+      "why_it_matters": "New users need to understand the app's value and how to start. Guidance reduces the cognitive load of learning a new interface from scratch.",
+      "what_to_do": [
+        "Add a 'Welcome' header or banner on the home screen",
+        "Implement a simple empty-state illustration with a 'Get Started' button",
+        "Use Tooltips or 'Tap Targets' to highlight key features for first-time users",
+        "Provide a clear 'Help' or 'Settings' icon in the top right"
+      ],
+      "code_example": {
+        "language": "kotlin",
+        "description": "Simple conditional onboarding check",
+        "code": "val isFirstRun = sharedPrefs.getBoolean(\"isFirstRun\", true)\nif (isFirstRun) {\n    showOnboardingOverlay()\n    sharedPrefs.edit().putBoolean(\"isFirstRun\", false).apply()\n}"
+      },
+      "wireframe_changes": "Add a 'Getting Started' card at the top of the layout with a brief description of the app's main function.",
+      "affected_components": [
+        "Global UI",
+        "Onboarding"
+      ],
+      "estimated_effort": "90 minutes"
+    }
+  ],
+  "wireframe_instructions": {
+    "overall_changes": "Transform the current empty screen into a standard Android Dashboard layout featuring a Top App Bar, a scrollable content area with cards, and a Bottom Navigation Bar.",
+    "priority_fixes": [
+      "Add a Top App Bar with a title 'My Dashboard'",
+      "Insert a Bottom Navigation Bar with 3 icons",
+      "Place a Floating Action Button in the bottom right corner"
+    ],
+    "layout_modifications": [
+      "Use a vertical LinearLayout or ConstraintLayout to stack content",
+      "Ensure margins of 16dp on the left and right of all content cards"
+    ],
+    "color_adjustments": [
+      "Use Material Surface color for the background",
+      "Apply a Primary color (e.g., #6200EE) to the FAB and App Bar"
+    ],
+    "typography_changes": [
+      "Use Headline6 for the App Bar title",
+      "Use Body1 for card content and Button text for actions"
+    ]
+  },
+  "quick_wins": [
+    {
+      "change": "Add a ProgressBar to the screen",
+      "impact": "Immediately signals to the user that the app is active and working.",
+      "effort": "10 minutes"
+    },
+    {
+      "change": "Set background color to Light Grey (#F5F5F5)",
+      "impact": "Reduces screen glare and makes content cards pop.",
+      "effort": "5 minutes"
+    },
+    {
+      "change": "Add a 'No Data Found' text view",
+      "impact": "Prevents the confusion of a blank screen when lists are empty.",
+      "effort": "10 minutes"
+    }
+  ],
+  "summary": {
+    "total_issues": 5,
+    "critical": 3,
+    "high": 2,
+    "medium": 0,
+    "low": 0,
+    "estimated_total_time": "5-6 hours"
+  },
+  "platform": "android",
+  "total_feedback_items": 5
+}

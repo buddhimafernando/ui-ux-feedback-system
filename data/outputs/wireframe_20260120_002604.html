@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Feedback - Improved Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .wireframe-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #48bb78;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.4);
+        }
+        
+        .wireframe-viewer {
+            background: #f7fafc;
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 600px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .wireframe-iframe {
+            width: 100%;
+            min-height: 800px;
+            border: none;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            border-radius: 5px;
+        }
+        
+        .info h3 {
+            color: #2c5282;
+            margin-bottom: 10px;
+        }
+        
+        .info ul {
+            margin-left: 20px;
+            color: #2d3748;
+        }
+        
+        .info li {
+            margin: 5px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 Improved UI Wireframe</h1>
+            <p>Based on UX Heuristic Evaluation & Feedback</p>
+        </div>
+        
+        <div class="stats">
+            <h2>📊 Evaluation Summary</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-value">8</span>
+                    <span class="stat-label">Total Issues</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" style="color: #f56565;">1</span>
+                    <span class="stat-label">High Priority</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" style="color: #ed8936;">3</span>
+                    <span class="stat-label">Medium Priority</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" style="color: #48bb78;">4</span>
+                    <span class="stat-label">Low Priority</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wireframe-section">
+            <div class="controls">
+                <button class="btn btn-primary" onclick="exportAsPNG()">
+                    📥 Export as PNG
+                </button>
+                <button class="btn btn-secondary" onclick="exportAsJPG()">
+                    📥 Export as JPG
+                </button>
+                <button class="btn btn-primary" onclick="downloadHTML()">
+                    💾 Download HTML
+                </button>
+            </div>
+            
+            <div class="wireframe-viewer">
+                <iframe 
+                    id="wireframe-iframe" 
+                    class="wireframe-iframe"
+                    srcdoc='<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Pool - Improved UI Wireframe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007BFF;
+            --secondary: #6f42c1;
+            --accent: #FF8C00;
+            --bg-light: #F8F9FA;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: &#39;Inter&#39;, sans-serif;
+        }
+
+        body {
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Mobile Shell */
+        .mobile-container {
+            width: 375px;
+            height: 720px;
+            background-color: var(--bg-light);
+            border-radius: 40px;
+            border: 8px solid #333;
+            position: relative;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Annotations Style */
+        .annotation {
+            font-size: 10px;
+            color: var(--secondary);
+            font-style: italic;
+            display: block;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #00BCD4, #2196F3);
+            padding: 40px 20px 24px 20px;
+            color: var(--white);
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .header-titles h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header-titles p {
+            margin: 4px 0 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Wallet Card Section - IMPROVEMENT: Grouped Balance & Redeem */
+        .wallet-card {
+            background: var(--white);
+            margin: -20px 20px 20px 20px;
+            padding: 16px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .balance-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .balance-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .balance-amount {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .coin-icon {
+            color: #FFD700;
+            font-size: 22px;
+        }
+
+        .btn-redeem {
+            background: linear-gradient(to right, #9C27B0, #6f42c1);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            min-height: 48px; /* Touch Target Fix */
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-redeem:active {
+            transform: scale(0.95);
+        }
+
+        /* Utility Actions - IMPROVEMENT: Better spacing */
+        .utility-row {
+            padding: 0 20px;
+            margin-bottom: 24px;
+        }
+
+        .btn-rate {
+            width: 100%;
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 12px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 48px;
+            cursor: pointer;
+        }
+
+        /* Category List - IMPROVEMENT: Standardized Design & Contrast */
+        .section-label {
+            padding: 0 24px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .category-container {
+            padding: 0 20px 40px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .category-card {
+            width: 100%;
+            min-height: 80px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            color: var(--white);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Contrast Fix: Added text-shadow and specific overlays */
+        .category-card span {
+            font-size: 18px;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3); 
+            z-index: 2;
+        }
+
+        .category-card::after {
+            content: &#39;➔&#39;;
+            position: absolute;
+            right: 24px;
+            font-size: 20px;
+            opacity: 0.7;
+        }
+
+        .maths { background: linear-gradient(135deg, #9C27B0, #E91E63); }
+        .gk { background: linear-gradient(135deg, #2196F3, #00BCD4); }
+        .science { background: linear-gradient(135deg, #FF5722, #FF9800); }
+
+        /* Custom Scrollbar */
+        .mobile-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        .mobile-container::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Header Section -->
+        <header>
+            <div class="header-top">
+                <div class="menu-icon">☰</div>
+                <div style="font-size: 20px;">👤</div>
+            </div>
+            <div class="header-titles">
+                <h1>Quiz Pool</h1>
+                <p>Play Quiz & Earn Money</p>
+                <span class="annotation">↑ Typo increased to 14sp for legibility</span>
+            </div>
+        </header>
+
+        <!-- Improved Wallet Card (Feedback 1 & 3) -->
+        <div class="wallet-card">
+            <div class="balance-info">
+                <span class="balance-label">My Balance</span>
+                <div class="balance-amount">
+                    <span class="coin-icon">💰</span>
+                    <span>27 Coins</span>
+                </div>
+                <span class="annotation">↑ Added icon & context to "27"</span>
+            </div>
+            <button class="btn-redeem">Redeem</button>
+            <span class="annotation" style="position: absolute; bottom: -18px; right: 0;">↑ Grouped balance & action</span>
+        </div>
+
+        <!-- Utility Row (Feedback 4) -->
+        <div class="utility-row">
+            <button class="btn-rate">
+                <span>⭐</span> Rate Our App
+            </button>
+            <span class="annotation">↑ Touch target 48dp & standardized title case</span>
+        </div>
+
+        <!-- Categories (Feedback 2 & 5) -->
+        <div class="section-label">Select Category</div>
+        <div class="category-container">
+            
+            <button class="category-card maths">
+                <span>Maths Beginner</span>
+            </button>
+            <span class="annotation" style="margin-top: -12px;">↑ Standardized Title Case & Text Contrast</span>
+
+            <button class="category-card gk">
+                <span>GK Beginner</span>
+            </button>
+
+            <button class="category-card science">
+                <span>Science Beginner</span>
+            </button>
+            <span class="annotation" style="margin-top: -12px;">↑ Consistent corner radius (12dp) & unified visual style</span>
+            
+        </div>
+
+        <!-- Bottom Tab Placeholder -->
+        <nav style="height: 60px; background: white; border-top: 1px solid #eee; display: flex; justify-content: space-around; align-items: center; position: sticky; bottom: 0;">
+            <div style="color: var(--primary); font-weight: 700; font-size: 12px; display: flex; flex-direction: column; align-items: center;">
+                <span>🏠</span>Home
+            </div>
+            <div style="color: #ccc; font-weight: 500; font-size: 12px; display: flex; flex-direction: column; align-items: center;">
+                <span>🏆</span>Leaderboard
+            </div>
+            <div style="color: #ccc; font-weight: 500; font-size: 12px; display: flex; flex-direction: column; align-items: center;">
+                <span>⚙️</span>Settings
+            </div>
+        </nav>
+    </div>
+
+</body>
+</html>'
+                ></iframe>
+            </div>
+            
+            <div class="info">
+                <h3>ℹ️ How to Export</h3>
+                <ul>
+                    <li><strong>Export as PNG/JPG:</strong> Click the export button to download the wireframe as an image</li>
+                    <li><strong>Download HTML:</strong> Get the complete HTML code to edit further</li>
+                    <li><strong>View in Browser:</strong> This page is already saved and can be opened in any browser</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        async function exportAsPNG() {
+            const iframe = document.getElementById('wireframe-iframe');
+            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+            
+            try {
+                const canvas = await html2canvas(iframeDocument.body, {
+                    scale: 2,
+                    backgroundColor: '#ffffff',
+                    logging: false
+                });
+                
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'improved-wireframe-' + Date.now() + '.png';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                });
+                
+                showNotification('PNG export started!');
+            } catch (error) {
+                console.error('Export error:', error);
+                alert('Export failed. Try downloading the HTML instead.');
+            }
+        }
+        
+        async function exportAsJPG() {
+            const iframe = document.getElementById('wireframe-iframe');
+            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+            
+            try {
+                const canvas = await html2canvas(iframeDocument.body, {
+                    scale: 2,
+                    backgroundColor: '#ffffff',
+                    logging: false
+                });
+                
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'improved-wireframe-' + Date.now() + '.jpg';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                }, 'image/jpeg', 0.95);
+                
+                showNotification('JPG export started!');
+            } catch (error) {
+                console.error('Export error:', error);
+                alert('Export failed. Try downloading the HTML instead.');
+            }
+        }
+        
+        function downloadHTML() {
+            const iframe = document.getElementById('wireframe-iframe');
+            const html = iframe.srcdoc;
+            
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'improved-wireframe-' + Date.now() + '.html';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showNotification('HTML downloaded!');
+        }
+        
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #48bb78;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+    </script>
+    
+    <style>
+        @keyframes slideIn {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(400px); opacity: 0; }
+        }
+    </style>
+</body>
+</html>

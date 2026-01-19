@@ -1,6 +1,3 @@
-from dotenv import load_dotenv
-load_dotenv()
-
 from google import genai
 from google.genai import types
 import os
@@ -8,7 +5,8 @@ from PIL import Image
 import json
 from typing import Dict, Any
 from pathlib import Path
-
+from dotenv import load_dotenv
+load_dotenv()
 
 class VisionAgent:
     """
@@ -24,14 +22,14 @@ class VisionAgent:
         # Initialize modern Gemini client
         self.client = genai.Client(api_key=self.api_key)
 
-        # Supported vision-capable model
+        # Supported vision capable model
         self.model_name = "gemini-3-flash-preview"
 
         print("✅ Vision Agent initialized with Gemini (google.genai)")
 
     def analyze_screenshot(self, image_path: str) -> Dict[str, Any]:
         try:
-            print(f"📸 Analyzing screenshot: {image_path}")
+            print(f" Analyzing screenshot: {image_path}")
 
             with open(image_path, "rb") as f:
                 image_bytes = f.read()

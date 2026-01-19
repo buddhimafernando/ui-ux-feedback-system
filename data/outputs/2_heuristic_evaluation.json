@@ -1,0 +1,98 @@
+{
+  "violations": [
+    {
+      "heuristic_id": 1,
+      "heuristic_name": "Visibility of system status",
+      "severity": "medium",
+      "issue": "Ambiguous numerical status indicator.",
+      "affected_components": [
+        "image: 27"
+      ],
+      "evidence": "The top-right card displays the number '27' without a unit or icon (e.g., coins, stars, or points).",
+      "improvement_suggestion": "Add a descriptive icon (like a coin or trophy) or a label (e.g., 'Coins: 27') to clarify what this value represents."
+    },
+    {
+      "heuristic_id": 4,
+      "heuristic_name": "Consistency and standards",
+      "severity": "low",
+      "issue": "Inconsistent text casing for similar category actions.",
+      "affected_components": [
+        "button: MATHS Beginner",
+        "button: GK BEGINNER",
+        "button: SCIENCE BEGINNER"
+      ],
+      "evidence": "The 'MATHS' button uses title case/mixed case, while 'GK BEGINNER' and 'SCIENCE BEGINNER' use all caps.",
+      "improvement_suggestion": "Apply consistent casing across all category buttons (e.g., all Title Case) to maintain visual harmony."
+    },
+    {
+      "heuristic_id": 6,
+      "heuristic_name": "Recognition rather than recall",
+      "severity": "medium",
+      "issue": "Lack of context for the 'Redeem' action.",
+      "affected_components": [
+        "button: Redeem"
+      ],
+      "evidence": "The button 'Redeem' is positioned separately from the '27' value, forcing users to associate the two through memory rather than proximity.",
+      "improvement_suggestion": "Group the balance indicator and the 'Redeem' button together in the UI to create a logical connection between the current earnings and the action to spend them."
+    },
+    {
+      "heuristic_id": 8,
+      "heuristic_name": "Aesthetic and minimalist design",
+      "severity": "low",
+      "issue": "High visual noise due to multiple disparate color gradients.",
+      "affected_components": [
+        "button: Redeem",
+        "button: Rate Us",
+        "button: MATHS Beginner",
+        "button: GK BEGINNER",
+        "button: SCIENCE BEGINNER"
+      ],
+      "evidence": "The UI uses four different primary colors (Cyan, Purple, Blue, Orange) and multiple gradients (Purple, Blue, Purple/Pink, Orange).",
+      "improvement_suggestion": "Limit the palette to 2-3 primary brand colors and use consistent gradient styles to reduce cognitive load and improve brand identity."
+    },
+    {
+      "heuristic_id": 10,
+      "heuristic_name": "Help and documentation",
+      "severity": "low",
+      "issue": "Absence of 'How to play' or help features.",
+      "affected_components": [
+        "home/dashboard"
+      ],
+      "evidence": "The dashboard includes 'Rate Us' and 'Redeem' but lacks an easily accessible Help or FAQ section for new users.",
+      "improvement_suggestion": "Add a help icon or an entry in the 'menu' that provides a brief tutorial or FAQ on how to earn and redeem money."
+    }
+  ],
+  "strengths": [
+    {
+      "heuristic_id": 4,
+      "heuristic_name": "Consistency and standards",
+      "observation": "The use of a standard 'menu' icon in the top-left follows established mobile navigation patterns."
+    },
+    {
+      "heuristic_id": 8,
+      "heuristic_name": "Aesthetic and minimalist design",
+      "observation": "Spacing and density are described as comfortable with generous padding, preventing the screen from feeling cluttered despite multiple categories."
+    }
+  ],
+  "mobile_specific_issues": [
+    {
+      "category": "Color and Contrast",
+      "severity": "high",
+      "issue": "Low contrast on secondary labels within colorful cards.",
+      "recommendation": "Ensure text contrast on the 'Beginner' labels meets WCAG AA standards (4.5:1). If the background is a vibrant gradient, white text may require a drop shadow or a semi-transparent dark overlay to remain legible."
+    },
+    {
+      "category": "Touch Targets",
+      "severity": "medium",
+      "issue": "The 'Redeem' and 'Rate Us' buttons are 'medium' and positioned side-by-side, which may lead to accidental taps.",
+      "recommendation": "Ensure these buttons meet the minimum 44x44pt (iOS) or 48x48dp (Android) size and maintain at least 8dp of horizontal spacing between them."
+    },
+    {
+      "category": "Typography",
+      "severity": "low",
+      "issue": "Sub-header 'Play Quiz Earn Money' is described as 'small' text on a primary background.",
+      "recommendation": "Ensure this sub-header remains at or above 14sp to maintain readability on small mobile screens."
+    }
+  ],
+  "overall_score": 7.1
+}

@@ -2,214 +2,224 @@
 
 ## 📊 Summary
 
-- **Total Issues Found:** 7
+- **Total Issues Found:** 8
 - **Critical:** 0
-- **High Priority:** 2
+- **High Priority:** 1
 - **Medium Priority:** 3
-- **Low Priority:** 2
-- **Estimated Time to Fix:** 2 hours
+- **Low Priority:** 4
+- **Estimated Time to Fix:** 4 hours
 
 ## ⚡ Quick Wins (Do These First!)
 
 These changes take minimal time but provide maximum impact:
 
-1. **Set textAllCaps="false" on all buttons**
-   - Impact: Immediately improves visual consistency and professional look
+1. **Standardize casing to Title Case**
+   - Impact: Immediate improvement in professional look
+   - Effort: 10 minutes
+
+2. **Increase spacing between action buttons**
+   - Impact: Reduces user error and frustration
    - Effort: 5 minutes
 
-2. **Update '27' text color to #212121**
-   - Impact: Removes the false 'error' signal to the user
-   - Effort: 2 minutes
-
-3. **Increase 'Redeem' font size to 16sp**
-   - Impact: Makes the primary conversion button much more readable
-   - Effort: 2 minutes
+3. **Add a coin icon to the balance card**
+   - Impact: Provides instant context for the numerical value
+   - Effort: 15 minutes
 
 ## 🔧 Detailed Feedback
 
-### HIGH Priority (2 items)
+### HIGH Priority (1 items)
 
-#### 1. Clarify Balance with Context and Color
+#### 2. Improve Label Contrast
+
+**Category:** Color and Contrast  
+**Estimated Effort:** 40 minutes
+
+**Why it matters:**  
+Low contrast makes text illegible, especially for users with visual impairments or those using their phones outdoors in bright light. Accessibility is a key part of professional app development.
+
+**What to do:**
+- Check contrast ratios for the 'Beginner' text against the gradient backgrounds
+- Apply a semi-transparent dark overlay (e.g., 20% black) behind light text on bright backgrounds
+- Increase font weight to 'Medium' or 'Bold' to improve legibility on vibrant colors
+- Target a WCAG AA contrast ratio of at least 4.5:1
+
+**Code Example (xml):**
+```xml
+<TextView
+    android:id="@+id/category_beginner_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#FFFFFF"
+    android:shadowColor="#40000000"
+    android:shadowDx="1"
+    android:shadowDy="1"
+    android:shadowRadius="2"
+    android:text="BEGINNER" />
+```
+
+**Visual changes needed:**  
+Darken the background gradients slightly or add a 1px dark text shadow to all white 'Beginner' labels on the category cards.
+
+---
+
+### MEDIUM Priority (3 items)
+
+#### 1. Clarify Earnings Indicator
 
 **Category:** Visibility of system status  
 **Estimated Effort:** 20 minutes
 
 **Why it matters:**  
-Users need to immediately understand what '27' represents. Using red text typically signals a negative balance or an error, which can cause unnecessary anxiety.
+Users need to know what their rewards represent at a glance. An isolated number like '27' lacks context and leaves users guessing whether they have points, coins, or dollars.
 
 **What to do:**
-- Add a descriptive icon (like a coin, star, or wallet) to the left of the numeric value
-- Change the text color from red (#F44336) to a neutral dark grey or a 'reward' color like gold or green
-- Add a small unit label if an icon isn't possible (e.g., '27 Pts')
-- Ensure the container has enough padding to breathe
-
-**Code Example (xml):**
-```xml
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:background="@drawable/bg_rounded_surface"
-    android:padding="8dp">
-
-    <ImageView
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:src="@drawable/ic_coin"
-        app:tint="#FFC107" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="27"
-        android:textColor="#212121"
-        android:textSize="16sp"
-        android:layout_marginStart="4dp" />
-</LinearLayout>
-```
-
-**Visual changes needed:**  
-In the top-right corner, replace the red '27' text with a horizontal pill-shaped container holding a gold coin icon followed by '27' in dark grey text.
-
----
-
-#### 2. Fix Accessibility Contrast Ratios
-
-**Category:** Color and Contrast  
-**Estimated Effort:** 15 minutes
-
-**Why it matters:**  
-White text on light gradients often fails accessibility standards, making it nearly impossible for users with visual impairments or those in bright sunlight to read your buttons.
-
-**What to do:**
-- Test your color pairs (White on #00BCD4) using a WCAG contrast checker
-- Darken the blue and purple gradients until they reach at least a 4.5:1 ratio with white text
-- Alternatively, use a dark navy text color on light backgrounds
-- Avoid using 'vibrant' colors as background for thin white text
-
-**Code Example (xml):**
-```xml
-<!-- res/drawable/btn_gradient_blue.xml -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient
-        android:startColor="#1976D2" 
-        android:endColor="#0D47A1"
-        android:angle="45" />
-    <corners android:radius="8dp" />
-</shape>
-```
-
-**Visual changes needed:**  
-Update the 'Rate Us' and 'Redeem' buttons to use deeper, darker versions of blue/purple to ensure the white text pops clearly.
-
----
-
-### MEDIUM Priority (2 items)
-
-#### 3. Simplify Visual Palette and Hierarchy
-
-**Category:** Aesthetic and minimalist design  
-**Estimated Effort:** 45 minutes
-
-**Why it matters:**  
-Using four high-vibrancy gradients simultaneously competes for the user's attention. A unified color scheme helps users identify primary actions faster and reduces 'visual noise'.
-
-**What to do:**
-- Select one primary brand color for main quiz buttons (e.g., Indigo or Blue)
-- Use a secondary, more neutral style for auxiliary actions like 'Rate Us'
-- Use color intentionally to categorize (e.g., all 'Beginner' levels share one color)
-- Reduce gradient intensity to allow text to be the hero
-
-**Code Example (kotlin):**
-```kotlin
-// Instead of unique colors for every button
-val primaryActionColor = ContextCompat.getColor(context, R.color.brand_primary)
-
-listOf(mathBtn, gkBtn, scienceBtn).forEach {
-    it.setBackgroundColor(primaryActionColor)
-    it.setTextColor(Color.WHITE)
-}
-```
-
-**Visual changes needed:**  
-Change 'MATHS', 'GK', and 'SCIENCE' buttons to use a consistent Primary Blue. Change 'Redeem' and 'Rate Us' to a outlined button style or a softer, neutral grey background.
-
----
-
-#### 4. Boost Minimum Font Sizes
-
-**Category:** Typography  
-**Estimated Effort:** 20 minutes
-
-**Why it matters:**  
-Mobile users often view screens at arm's length or on the move. Text smaller than 14sp is difficult to parse and creates a poor user experience for secondary information.
-
-**What to do:**
-- Increase 'Beginner' and 'Redeem' text to a minimum of 14sp, ideally 16sp
-- Use 'sp' (scale-independent pixels) for all font sizes to respect user system settings
-- Check that text doesn't truncate when the size is increased
-- Use font weight (Medium/Bold) to create hierarchy instead of just size
+- Add a relevant icon (e.g., a gold coin or trophy) next to the number 27
+- Add a descriptive label like 'My Balance' or 'Points'
+- Ensure the icon and text are vertically aligned
+- Use a distinct color for the icon to make it stand out as a currency
 
 **Code Example (xml):**
 ```xml
 <TextView
-    android:id="@+id/label_beginner"
+    android:id="@+id/balance_text"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textSize="14sp" 
-    android:fontFamily="sans-serif-medium"
-    android:textAllCaps="false"
-    android:text="@string/beginner" />
+    android:text="27"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:drawablePadding="8dp"
+    app:drawableStartCompat="@drawable/ic_coin" />
 ```
 
 **Visual changes needed:**  
-Enlarge the text 'Beginner' inside the category cards and the text 'Redeem' on the button. Ensure there is enough vertical padding inside the buttons to accommodate the larger text.
+In the top-right card, replace the standalone '27' with a horizontal layout containing a 24dp coin icon and the text '27 Coins'.
+
+---
+
+#### 3. Group Balance and Redeem Actions
+
+**Category:** Recognition rather than recall  
+**Estimated Effort:** 1 hour
+
+**Why it matters:**  
+Users should immediately see the relationship between what they have (balance) and what they can do with it (redeem). Grouping them reduces cognitive load.
+
+**What to do:**
+- Move the 'Redeem' button closer to the balance indicator
+- Place both elements inside a single 'Wallet' card or container
+- Ensure the visual flow leads from the balance to the action
+- Maintain adequate spacing from other dashboard elements
+
+**Code Example (xml):**
+```xml
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+        
+        <TextView
+            android:layout_weight="1"
+            android:text="Balance: 27 Coins" />
+            
+        <Button
+            android:id="@+id/btn_redeem"
+            android:text="Redeem" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+```
+
+**Visual changes needed:**  
+Create a 'Wallet' section at the top of the screen that contains both the coin balance and the 'Redeem' button side-by-side or stacked within one card.
+
+---
+
+#### 4. Optimize Touch Targets
+
+**Category:** Touch Targets  
+**Estimated Effort:** 30 minutes
+
+**Why it matters:**  
+Small, adjacent buttons cause 'fat-finger' errors where users tap the wrong action by mistake. This is particularly frustrating for critical actions like 'Redeem' vs 'Rate Us'.
+
+**What to do:**
+- Ensure all buttons are at least 48dp in height
+- Add a minimum of 16dp horizontal spacing between 'Redeem' and 'Rate Us'
+- Consider making these buttons full-width and stacked if screen real estate allows
+- Ensure the clickable area (padding) extends to the full 48dp even if the visual button looks smaller
+
+**Code Example (xml):**
+```xml
+<!-- Use a Flow or LinearLayout with weights and margins -->
+<Button
+    android:id="@+id/btn_redeem"
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:layout_marginEnd="8dp"
+    android:text="Redeem" />
+
+<Button
+    android:id="@+id/btn_rate"
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:layout_marginStart="8dp"
+    android:text="Rate Us" />
+```
+
+**Visual changes needed:**  
+Increase the horizontal gap between the 'Redeem' and 'Rate Us' buttons to 16dp and ensure their height is 48dp.
 
 ---
 
 ### LOW Priority (1 items)
 
-#### 5. Standardize Button Casing
+#### 5. Standardize Visual Design
 
-**Category:** Consistency and standards  
-**Estimated Effort:** 10 minutes
+**Category:** Aesthetic and minimalist design  
+**Estimated Effort:** 1.5 hours
 
 **Why it matters:**  
-Inconsistent casing (Title Case vs. ALL CAPS) feels like an oversight and reduces the professional feel of the app. Consistency builds trust.
+A cohesive color palette and consistent text casing make the app feel professional and trustworthy. Too many colors can overwhelm the user.
 
 **What to do:**
-- Choose one casing style for all primary buttons (Title Case is generally more readable)
-- Update string resources to use the chosen format
-- Set 'android:textAllCaps="false"' in XML if using Title Case on Material Buttons
+- Pick 2 primary brand colors and use them for all main actions
+- Standardize text to Title Case (e.g., 'Maths Beginner' instead of 'MATHS Beginner')
+- Use a consistent corner radius for all cards and buttons (e.g., 12dp)
+- Limit the use of different gradients; try using solid colors with subtle elevations instead
 
 **Code Example (xml):**
 ```xml
-<!-- Use Title Case for better readability -->
+<!-- Disable auto-allCaps and use Title Case in text -->
 <Button
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAllCaps="false"
-    android:text="Maths Beginner" />
+    android:text="Science Beginner" />
 ```
 
 **Visual changes needed:**  
-Update 'GK BEGINNER' and 'SCIENCE BEGINNER' to 'Gk Beginner' and 'Science Beginner' to match the Maths button.
+Update all category buttons to use 'Title Case' and restrict the button colors to a single primary brand color (e.g., Blue) instead of four different colors.
 
 ---
 
 ## 🎨 Visual Design Changes
 
-**Overall:** The home screen needs a cleaner, more organized look by reducing the color count and standardizing typography.
+**Overall:** Consolidate the dashboard into a more organized, less colorful layout that focuses on clarity and accessibility.
 
 **Priority Visual Fixes:**
-- Add a coin icon and change color for the '27' balance indicator in the top right.
-- Darken background gradients on all buttons to pass contrast checks with white text.
-- Convert all button labels to Title Case for visual consistency.
+- Merge the balance indicator and Redeem button into a single top-level Wallet Card.
+- Fix contrast on all category labels by adding a text shadow or darkening the background.
+- Standardize all button text to Title Case and increase touch target padding.
 
 **Color Adjustments:**
-- Consolidate the 4 vibrant gradients into 1 primary brand color for categories and 1 neutral/muted color for utility buttons.
-- Change the status number '27' from red to dark grey or gold.
+- Reduce the number of unique gradients to 2 variations.
+- Ensure all white text has a contrast ratio of 4.5:1 against backgrounds.
 
 **Typography Changes:**
-- Increase the font size of all secondary labels ('Beginner', 'Redeem') to 14sp minimum.
-- Ensure all buttons use Title Case (e.g., 'Science Beginner' instead of 'SCIENCE BEGINNER').
+- Increase sub-header 'Play Quiz Earn Money' to 14sp or 16sp.
+- Set all category button text to 16sp Medium weight.

@@ -51,7 +51,7 @@ class HeuristicAgent:
             Dictionary with violations and scores
         """
         try:
-            print(f"\n🔍 Evaluating UI against Nielsen's heuristics...")
+            print(f"\n Evaluating UI against Nielsen's heuristics...")
             
             # Create evaluation prompt
             prompt = self._create_evaluation_prompt(vision_analysis)

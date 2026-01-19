@@ -16,7 +16,7 @@ def test_full_pipeline(image_path: str, platform: str = "android"):
     print("=" * 70)
     
     # Step 1: Vision Analysis
-    print("\n📸 STEP 1: Analyzing UI with Vision Agent...")
+    print("\n STEP 1: Analyzing UI with Vision Agent...")
     vision_agent = VisionAgent()
     vision_result = vision_agent.analyze_screenshot(image_path)
 
@@ -26,7 +26,7 @@ def test_full_pipeline(image_path: str, platform: str = "android"):
         json.dump(vision_result, f, indent=2)
     
     # Step 2: Heuristic Evaluation
-    print("\n🔍 STEP 2: Evaluating against heuristics...")
+    print("\n STEP 2: Evaluating against heuristics...")
     heuristic_agent = HeuristicAgent()
     evaluation_result = heuristic_agent.evaluate(vision_result)
 
@@ -35,7 +35,7 @@ def test_full_pipeline(image_path: str, platform: str = "android"):
         json.dump(evaluation_result, f, indent=2)
 
     # Step 3: Generate Report
-    print("\n📄 STEP 3: Generating report...")
+    print("\n STEP 3: Generating report...")
     report = heuristic_agent.generate_report(evaluation_result)
     
     # Save report
@@ -43,7 +43,7 @@ def test_full_pipeline(image_path: str, platform: str = "android"):
         f.write(report)
 
     # Step 4: Generate Feedback
-    print(f"\n💡 STEP 3: Generating developer feedback for {platform}...")
+    print(f"\n STEP 4: Generating developer feedback for {platform}...")
     feedback_agent = FeedbackAgent()
     feedback_result = feedback_agent.generate_feedback(
         vision_result,
@@ -60,18 +60,18 @@ def test_full_pipeline(image_path: str, platform: str = "android"):
     # with open("data/outputs/2_heuristic_evaluation.json", 'w') as f:
     #     json.dump(evaluation_result, f, indent=2)
     
-    with open("data/outputs/3_feedback.json", 'w') as f:
+    with open("data/outputs/feedback_file.json", 'w') as f:
         json.dump(feedback_result, f, indent=2)
     
     # Generate developer report
-    print("\n📄 STEP 5: Generating developer report...")
+    print("\n STEP 5: Generating developer report...")
     report = feedback_agent.generate_developer_report(feedback_result)
     
     with open("data/outputs/DEVELOPER_FEEDBACK.md", 'w') as f:
         f.write(report)
     
     # Display report
-    print("\n" + report)
+    # print("\n" + report)
     
     print("\n" + "=" * 70)
     print("✅ PIPELINE COMPLETE!")
@@ -87,7 +87,7 @@ def test_full_pipeline(image_path: str, platform: str = "android"):
 
 if __name__ == "__main__":
     # Test with your quiz app screenshot
-    image_path = "data/test_screenshots/test_image.png"
+    image_path = "data/test_screenshots/test_image.PNG"
     
     # You can change platform to "ios" or "react-native"
     test_full_pipeline(image_path, platform="android")
